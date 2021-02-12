@@ -1,0 +1,131 @@
+[
+  {
+    "nodes" : [
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{-122, -123}, {505, 568}}",
+        "class" : "View",
+        "attributes" : {
+          "class" : "View",
+          "frame" : "{{87, 95}, {100, 100}}",
+          "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "name" : "sceneview",
+          "custom_class" : "SceneView",
+          "uuid" : "8F3A5C90-DA54-4CBD-A682-92C5ED04EE82"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{10, 27}, {234, 38}}",
+        "class" : "DatePicker",
+        "attributes" : {
+          "mode" : 3,
+          "frame" : "{{-40, 12}, {320, 216}}",
+          "flex" : "",
+          "name" : "datepicker1",
+          "class" : "DatePicker",
+          "uuid" : "302DBF5C-B316-403E-841F-5A8073F96148"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{6, 104}, {160, 34}}",
+        "class" : "Slider",
+        "attributes" : {
+          "uuid" : "E8ED59A0-EDDA-4A34-8523-EDE3E6166C63",
+          "frame" : "{{20, 103}, {200, 34}}",
+          "value" : 0.5,
+          "class" : "Slider",
+          "name" : "slider1",
+          "flex" : "W"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{174, 104}, {70, 56}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label1",
+          "frame" : "{{45, 104}, {150, 32}}",
+          "uuid" : "22804229-0139-4F94-8215-E91D804ED057",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "Label",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{32, 172}, {80, 40}}",
+        "class" : "Button",
+        "attributes" : {
+          "uuid" : "722CD908-42A9-4DED-B27D-F822F3613F37",
+          "frame" : "{{80, 104}, {80, 32}}",
+          "title" : "Button",
+          "class" : "Button",
+          "name" : "button1",
+          "font_size" : 15
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{141, 180}, {82, 32}}",
+        "class" : "Label",
+        "attributes" : {
+          "name" : "label2",
+          "frame" : "{{45, 104}, {150, 32}}",
+          "uuid" : "CFFC9DE3-5B05-4F89-9631-A4FECFC2A8D5",
+          "class" : "Label",
+          "alignment" : "left",
+          "text" : "Label",
+          "font_size" : 18,
+          "font_name" : "<System>"
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{66, 220}, {400, 400}}",
+        "class" : "View",
+        "attributes" : {
+          "name" : "pickerview",
+          "frame" : "{{87, 95}, {100, 100}}",
+          "custom_class" : "Picker",
+          "class" : "View",
+          "uuid" : "0723CBF4-5046-4F34-B7B0-E4A4BD29CA06"
+        },
+        "selected" : true
+      }
+    ],
+    "frame" : "{{0, 0}, {273, 290}}",
+    "class" : "View",
+    "attributes" : {
+      "enabled" : true,
+      "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "flex" : ""
+    },
+    "selected" : false
+  }
+]
