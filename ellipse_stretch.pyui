@@ -26,7 +26,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{0, 0}, {400, 768}}",
+            "frame" : "{{0, 0}, {340, 768}}",
             "class" : "View",
             "attributes" : {
               "alpha" : 0.20000000000000001,
@@ -152,7 +152,7 @@
             "selected" : true
           }
         ],
-        "frame" : "{{0, 0}, {400, 768}}",
+        "frame" : "{{0, 0}, {340, 768}}",
         "class" : "View",
         "attributes" : {
           "flex" : "H",
