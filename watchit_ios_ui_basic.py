@@ -12,6 +12,7 @@ from datetime import datetime,timedelta
 class Clock (Scene):
 	def setup(self):
 		self.offset, sync_flag = self.get_offset()
+		self.lag = timedelta(seconds=0)
 
 		r = min(self.size)/2 * 0.9
 		circle = ui.Path.oval(0, 0, r*2, r*2)
@@ -61,12 +62,15 @@ class Clock (Scene):
 		self.button = self.view.superview.subviews[3]
 		self.label2 = self.view.superview.subviews[4]
 
+		self.slider.action = self.slider_changed
+
+
 
 	def did_change_size(self):
 		self.face.position = self.size/2
 
 	def update(self):
-		t = datetime.now() - self.offset
+		t = datetime.now() - self.offset + self.lag
 		tick = -2 * pi / 60.0
 		seconds = t.second + t.microsecond/1000000.0
 		minutes = t.minute + seconds/60.0
@@ -92,6 +96,11 @@ class Clock (Scene):
 				return timedelta(seconds=0), False
 
 
+	def slider_changed(self, sender):
+		value = round(sender.superview['slider1'].value*600-300,2)
+		sender.superview['label2'].text = str(value)
+		self.lag = timedelta(seconds=value)
+		self.update()
 
 
 #run(Clock())
