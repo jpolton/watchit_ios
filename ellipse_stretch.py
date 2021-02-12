@@ -115,6 +115,6 @@ class MyScene (Scene):
         self.updateStuff()
         
         
-v = ui.load_view('test.pyui')
+v = ui.load_view('ellipse_stretch.pyui')
 v['sceneview'].scene = MyScene()
 v.present('fullscreen') 
