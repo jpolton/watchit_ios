@@ -8,11 +8,11 @@
         "frame" : "{{0, 0}, {375, 375}}",
         "class" : "View",
         "attributes" : {
-          "custom_class" : "SceneView",
+          "name" : "sceneview",
           "frame" : "{{87, 95}, {100, 100}}",
           "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "custom_class" : "SceneView",
           "class" : "View",
-          "name" : "sceneview",
           "uuid" : "8F3A5C90-DA54-4CBD-A682-92C5ED04EE82"
         },
         "selected" : false
@@ -37,16 +37,16 @@
         "nodes" : [
 
         ],
-        "frame" : "{{174, 104}, {70, 56}}",
+        "frame" : "{{127, 172}, {140, 32}}",
         "class" : "Label",
         "attributes" : {
-          "font_size" : 18,
+          "name" : "label1",
           "frame" : "{{45, 104}, {150, 32}}",
           "uuid" : "22804229-0139-4F94-8215-E91D804ED057",
           "class" : "Label",
           "alignment" : "left",
           "text" : "Label",
-          "name" : "label1",
+          "font_size" : 18,
           "font_name" : "<System>"
         },
         "selected" : false
@@ -71,29 +71,29 @@
         "nodes" : [
 
         ],
-        "frame" : "{{141, 180}, {82, 32}}",
+        "frame" : "{{145, 226}, {79, 32}}",
         "class" : "Label",
         "attributes" : {
-          "font_size" : 18,
+          "name" : "label2",
           "frame" : "{{45, 104}, {150, 32}}",
           "uuid" : "CFFC9DE3-5B05-4F89-9631-A4FECFC2A8D5",
           "class" : "Label",
           "alignment" : "left",
-          "text" : "Label",
-          "name" : "label2",
+          "text" : "Lag",
+          "font_size" : 18,
           "font_name" : "<System>"
         },
-        "selected" : false
+        "selected" : true
       }
     ],
     "frame" : "{{0, 0}, {375, 375}}",
     "class" : "View",
     "attributes" : {
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "name" : "",
       "flex" : ""
     },
     "selected" : false

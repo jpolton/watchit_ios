@@ -1,6 +1,9 @@
 '''
 A simple analog clock made of ShapeNodes.
-Includes UI
+Includes slider UI to adjust the minutes, seconds and tenths of seconds.
+
+To use internet clock time install stuff, see:
+https://github.com/ywangd/stash
 '''
 
 from scene import *
@@ -12,8 +15,11 @@ from datetime import datetime,timedelta
 class Clock (Scene):
 	def setup(self):
 		self.offset, sync_flag = self.get_offset()
-		self.lag = timedelta(seconds=0)
+		self.button_state = 0 # [0,1,2] for different slider range
+		self.button_label = ["mins", "secs", "0.1s"]
+		self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)]
 
+		# Draw the clock		
 		r = min(self.size)/2 * 0.9
 		circle = ui.Path.oval(0, 0, r*2, r*2)
 		circle.line_width = 6
@@ -63,6 +69,7 @@ class Clock (Scene):
 		self.label2 = self.view.superview.subviews[4]
 
 		self.slider.action = self.slider_changed
+		self.button.action = self.button_changed
 
 
 
@@ -70,7 +77,7 @@ class Clock (Scene):
 		self.face.position = self.size/2
 
 	def update(self):
-		t = datetime.now() - self.offset + self.lag
+		t = datetime.now() - self.offset + self.lag[0] + self.lag[1] + self.lag[2]
 		tick = -2 * pi / 60.0
 		seconds = t.second + t.microsecond/1000000.0
 		minutes = t.minute + seconds/60.0
@@ -97,11 +104,24 @@ class Clock (Scene):
 
 
 	def slider_changed(self, sender):
-		value = round(sender.superview['slider1'].value*600-300,2)
-		sender.superview['label2'].text = str(value)
-		self.lag = timedelta(seconds=value)
+		if self.button_state == 0:
+			value = int(sender.superview['slider1'].value*10-5)
+			self.lag[0] = timedelta(seconds=value*60)
+		elif self.button_state == 1:
+			value = int(sender.superview['slider1'].value*60-30)
+			self.lag[1] = timedelta(seconds=value)
+		else:	
+			value = round(sender.superview['slider1'].value*2-1,1)
+			self.lag[2] = timedelta(seconds=value)
+			sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
 		self.update()
 
+	def button_changed(self, sender):
+		self.button_state = (self.button_state + 1) % 3 
+		sender.superview['label1'].text = str(self.button_state)
+		sender.superview['slider1'].value = 0.5
+		sender.superview['button1'].title = str(self.button_label[self.button_state])
+		self.update()
 
 #run(Clock())
 v = ui.load_view('watchit_ios_basic.pyui')
