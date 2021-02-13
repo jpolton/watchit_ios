@@ -5,14 +5,14 @@
         "nodes" : [
 
         ],
-        "frame" : "{{-122, -123}, {505, 568}}",
+        "frame" : "{{0, 0}, {375, 375}}",
         "class" : "View",
         "attributes" : {
-          "class" : "View",
+          "name" : "sceneview",
           "frame" : "{{87, 95}, {100, 100}}",
           "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-          "name" : "sceneview",
           "custom_class" : "SceneView",
+          "class" : "View",
           "uuid" : "8F3A5C90-DA54-4CBD-A682-92C5ED04EE82"
         },
         "selected" : false
@@ -21,23 +21,7 @@
         "nodes" : [
 
         ],
-        "frame" : "{{10, 27}, {234, 38}}",
-        "class" : "DatePicker",
-        "attributes" : {
-          "mode" : 3,
-          "frame" : "{{-40, 12}, {320, 216}}",
-          "flex" : "",
-          "name" : "datepicker1",
-          "class" : "DatePicker",
-          "uuid" : "302DBF5C-B316-403E-841F-5A8073F96148"
-        },
-        "selected" : false
-      },
-      {
-        "nodes" : [
-
-        ],
-        "frame" : "{{6, 104}, {160, 34}}",
+        "frame" : "{{6, 104}, {249, 34}}",
         "class" : "Slider",
         "attributes" : {
           "uuid" : "E8ED59A0-EDDA-4A34-8523-EDE3E6166C63",
@@ -53,7 +37,7 @@
         "nodes" : [
 
         ],
-        "frame" : "{{174, 104}, {70, 56}}",
+        "frame" : "{{127, 172}, {140, 32}}",
         "class" : "Label",
         "attributes" : {
           "name" : "label1",
@@ -87,7 +71,7 @@
         "nodes" : [
 
         ],
-        "frame" : "{{141, 180}, {82, 32}}",
+        "frame" : "{{145, 226}, {79, 32}}",
         "class" : "Label",
         "attributes" : {
           "name" : "label2",
@@ -95,35 +79,21 @@
           "uuid" : "CFFC9DE3-5B05-4F89-9631-A4FECFC2A8D5",
           "class" : "Label",
           "alignment" : "left",
-          "text" : "Label",
+          "text" : "Lag",
           "font_size" : 18,
           "font_name" : "<System>"
-        },
-        "selected" : false
-      },
-      {
-        "nodes" : [
-
-        ],
-        "frame" : "{{66, 220}, {400, 400}}",
-        "class" : "View",
-        "attributes" : {
-          "name" : "pickerview",
-          "frame" : "{{87, 95}, {100, 100}}",
-          "custom_class" : "Picker",
-          "class" : "View",
-          "uuid" : "0723CBF4-5046-4F34-B7B0-E4A4BD29CA06"
         },
         "selected" : true
       }
     ],
-    "frame" : "{{0, 0}, {273, 290}}",
+    "frame" : "{{0, 0}, {375, 375}}",
     "class" : "View",
     "attributes" : {
+      "name" : "",
       "enabled" : true,
+      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
-      "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
       "flex" : ""
     },
     "selected" : false

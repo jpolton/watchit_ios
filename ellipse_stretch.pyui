@@ -26,7 +26,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{0, 0}, {400, 768}}",
+            "frame" : "{{0, 0}, {275, 768}}",
             "class" : "View",
             "attributes" : {
               "alpha" : 0.20000000000000001,
@@ -43,7 +43,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{110, 30}, {193, 34}}",
+            "frame" : "{{81, 30}, {127, 34}}",
             "class" : "Slider",
             "attributes" : {
               "flex" : "",
@@ -60,7 +60,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{310, 30}, {70, 34}}",
+            "frame" : "{{225, 30}, {43, 34}}",
             "class" : "Label",
             "attributes" : {
               "font_size" : 18,
@@ -79,7 +79,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{25, 30}, {75, 34}}",
+            "frame" : "{{25, 30}, {55, 34}}",
             "class" : "Label",
             "attributes" : {
               "alpha" : 1,
@@ -99,7 +99,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{25, 80}, {75, 34}}",
+            "frame" : "{{18, 80}, {55, 34}}",
             "class" : "Label",
             "attributes" : {
               "alpha" : 1,
@@ -119,7 +119,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{110, 80}, {192, 34}}",
+            "frame" : "{{81, 80}, {134, 34}}",
             "class" : "Slider",
             "attributes" : {
               "flex" : "",
@@ -136,7 +136,7 @@
             "nodes" : [
 
             ],
-            "frame" : "{{310, 80}, {70, 34}}",
+            "frame" : "{{225, 80}, {43, 34}}",
             "class" : "Label",
             "attributes" : {
               "font_size" : 18,
@@ -149,10 +149,10 @@
               "name" : "label-02",
               "font_name" : "<System>"
             },
-            "selected" : true
+            "selected" : false
           }
         ],
-        "frame" : "{{0, 0}, {400, 768}}",
+        "frame" : "{{0, 0}, {275, 768}}",
         "class" : "View",
         "attributes" : {
           "flex" : "H",
