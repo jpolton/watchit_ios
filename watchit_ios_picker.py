@@ -1,5 +1,11 @@
 '''
+WORK IN PROGRESS
+
 A simple analog clock made of ShapeNodes.
+Includes custom picker UI to adjust the lag with true time.
+
+To use internet clock time install stuff, see:
+https://github.com/ywangd/stash
 '''
 
 from scene import *
