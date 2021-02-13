@@ -124,7 +124,7 @@ class Clock (Scene):
 		self.update()
 
 #run(Clock())
-v = ui.load_view('watchit_ios_basic.pyui')
+v = ui.load_view('watchit_ios.pyui')
 v['sceneview'].scene = Clock()
 #v['pickerview'].scene = Picker()
 v.present('fullscreen')
