@@ -17,7 +17,8 @@ class Clock (Scene):
 		self.offset, sync_flag = self.get_offset()
 		self.button_state = 0 # [0,1,2] for different slider range
 		self.button_label = ["mins", "secs", "0.1s"]
-		self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)]
+		self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
+		self.slider_loc = [0.5, 0.5, 0.5] # Store the slider location
 
 		# Draw the clock		
 		r = min(self.size)/2 * 0.9
@@ -104,23 +105,25 @@ class Clock (Scene):
 
 
 	def slider_changed(self, sender):
+		value = sender.superview['slider1'].value
 		if self.button_state == 0:
-			value = int(sender.superview['slider1'].value*10-5)
-			self.lag[0] = timedelta(seconds=value*60)
+			#value = int(sender.superview['slider1'].value*10-5)
+			self.lag[0] = timedelta(seconds=int(value*10-5)*60)
 		elif self.button_state == 1:
-			value = int(sender.superview['slider1'].value*60-30)
-			self.lag[1] = timedelta(seconds=value)
+			#value = int(sender.superview['slider1'].value*60-30)
+			self.lag[1] = timedelta(seconds=int(value*60-30))
 		else:	
-			value = round(sender.superview['slider1'].value*2-1,1)
-			self.lag[2] = timedelta(seconds=value)
+			#value = round(sender.superview['slider1'].value*2-1,1)
+			self.lag[2] = timedelta(seconds=round(value*2-1,1))
 		
+		self.slider_loc[self.button_state] = value
 		sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
 		self.update()
 
 	def button_changed(self, sender):
 		self.button_state = (self.button_state + 1) % 3 
 		sender.superview['label1'].text = str(self.button_state)
-		sender.superview['slider1'].value = 0.5
+		sender.superview['slider1'].value = self.slider_loc[self.button_state]
 		sender.superview['button1'].title = str(self.button_label[self.button_state])
 		self.update()
 
