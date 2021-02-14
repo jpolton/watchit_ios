@@ -37,7 +37,7 @@
         "nodes" : [
 
         ],
-        "frame" : "{{127, 172}, {140, 32}}",
+        "frame" : "{{242, 172}, {73, 34}}",
         "class" : "Label",
         "attributes" : {
           "font_size" : 18,
@@ -45,7 +45,7 @@
           "uuid" : "22804229-0139-4F94-8215-E91D804ED057",
           "class" : "Label",
           "alignment" : "left",
-          "text" : "Label",
+          "text" : "mins",
           "name" : "label1",
           "font_name" : "<System>"
         },
@@ -55,17 +55,17 @@
         "nodes" : [
 
         ],
-        "frame" : "{{32, 172}, {80, 40}}",
+        "frame" : "{{74, 172}, {80, 34}}",
         "class" : "Button",
         "attributes" : {
           "uuid" : "722CD908-42A9-4DED-B27D-F822F3613F37",
           "frame" : "{{80, 104}, {80, 32}}",
-          "title" : "mins",
+          "title" : "mode",
           "class" : "Button",
           "name" : "button1",
-          "font_size" : 15
+          "font_size" : 18
         },
-        "selected" : true
+        "selected" : false
       },
       {
         "nodes" : [
@@ -78,12 +78,28 @@
           "frame" : "{{45, 104}, {150, 32}}",
           "uuid" : "CFFC9DE3-5B05-4F89-9631-A4FECFC2A8D5",
           "class" : "Label",
-          "alignment" : "left",
+          "alignment" : "center",
           "text" : "Lag",
           "name" : "label2",
           "font_name" : "<System>"
         },
         "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{144, 266}, {80, 40}}",
+        "class" : "Button",
+        "attributes" : {
+          "font_size" : 18,
+          "frame" : "{{80, 104}, {80, 32}}",
+          "title" : "save",
+          "class" : "Button",
+          "name" : "button2",
+          "uuid" : "722CD908-42A9-4DED-B27D-F822F3613F37"
+        },
+        "selected" : true
       }
     ],
     "frame" : "{{0, 0}, {375, 375}}",
