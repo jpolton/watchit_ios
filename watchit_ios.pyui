@@ -8,11 +8,11 @@
         "frame" : "{{0, 0}, {375, 375}}",
         "class" : "View",
         "attributes" : {
-          "name" : "sceneview",
+          "class" : "View",
           "frame" : "{{87, 95}, {100, 100}}",
           "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "name" : "sceneview",
           "custom_class" : "SceneView",
-          "class" : "View",
           "uuid" : "8F3A5C90-DA54-4CBD-A682-92C5ED04EE82"
         },
         "selected" : false
@@ -40,13 +40,13 @@
         "frame" : "{{127, 172}, {140, 32}}",
         "class" : "Label",
         "attributes" : {
-          "name" : "label1",
+          "font_size" : 18,
           "frame" : "{{45, 104}, {150, 32}}",
           "uuid" : "22804229-0139-4F94-8215-E91D804ED057",
           "class" : "Label",
           "alignment" : "left",
           "text" : "Label",
-          "font_size" : 18,
+          "name" : "label1",
           "font_name" : "<System>"
         },
         "selected" : false
@@ -60,12 +60,12 @@
         "attributes" : {
           "uuid" : "722CD908-42A9-4DED-B27D-F822F3613F37",
           "frame" : "{{80, 104}, {80, 32}}",
-          "title" : "Button",
+          "title" : "mins",
           "class" : "Button",
           "name" : "button1",
           "font_size" : 15
         },
-        "selected" : false
+        "selected" : true
       },
       {
         "nodes" : [
@@ -74,26 +74,26 @@
         "frame" : "{{145, 226}, {79, 32}}",
         "class" : "Label",
         "attributes" : {
-          "name" : "label2",
+          "font_size" : 18,
           "frame" : "{{45, 104}, {150, 32}}",
           "uuid" : "CFFC9DE3-5B05-4F89-9631-A4FECFC2A8D5",
           "class" : "Label",
           "alignment" : "left",
           "text" : "Lag",
-          "font_size" : 18,
+          "name" : "label2",
           "font_name" : "<System>"
         },
-        "selected" : true
+        "selected" : false
       }
     ],
     "frame" : "{{0, 0}, {375, 375}}",
     "class" : "View",
     "attributes" : {
-      "name" : "",
+      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "enabled" : true,
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
+      "name" : "",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
-      "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "flex" : ""
     },
     "selected" : false

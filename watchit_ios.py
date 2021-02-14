@@ -113,7 +113,8 @@ class Clock (Scene):
 		else:	
 			value = round(sender.superview['slider1'].value*2-1,1)
 			self.lag[2] = timedelta(seconds=value)
-			sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
+		
+		sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
 		self.update()
 
 	def button_changed(self, sender):
