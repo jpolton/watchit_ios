@@ -4,6 +4,8 @@ Includes slider UI to adjust the minutes, seconds and tenths of seconds.
 
 To use internet clock time install stuff, see:
 https://github.com/ywangd/stash
+
+Needs true time
 '''
 
 from scene import *
@@ -20,7 +22,7 @@ class Clock (Scene):
 		self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
 		self.slider_loc = [0.5, 0.5, 0.5] # Store the slider location
 
-		# Draw the clock		
+		# Draw the clock
 		r = min(self.size)/2 * 0.9
 		circle = ui.Path.oval(0, 0, r*2, r*2)
 		circle.line_width = 6
@@ -69,7 +71,7 @@ class Clock (Scene):
 		self.button = self.view.superview.subviews[3]
 		self.label2 = self.view.superview.subviews[4]
 		self.button_save = self.view.superview.subviews[5]
-		
+
 		self.slider.action = self.slider_changed
 		self.button.action = self.button_changed
 		self.button_save.action = self.button_save_changed
@@ -114,40 +116,40 @@ class Clock (Scene):
 		elif self.button_state == 1:
 			#value = int(sender.superview['slider1'].value*60-30)
 			self.lag[1] = timedelta(seconds=int(value*60-30))
-		else:	
+		else:
 			#value = round(sender.superview['slider1'].value*2-1,1)
 			self.lag[2] = timedelta(seconds=round(value*2-1,1))
-		
+
 		self.slider_loc[self.button_state] = value
 		sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
 		self.update()
 
 	def button_changed(self, sender):
-		self.button_state = (self.button_state + 1) % 3 
+		self.button_state = (self.button_state + 1) % 3
 		sender.superview['label1'].text = str(self.button_label[self.button_state]) #str(self.button_state)
 		sender.superview['slider1'].value = self.slider_loc[self.button_state]
 		#sender.superview['button1'].title = str(self.button_label[self.button_state])
 		self.update()
-		
+
 	def button_save_changed(self, sender):
 		Logging().save( str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()) )
 		self.update()
-		
+
 
 class Logging (Clock):
 	def setup(self, label):
 		pass
-		
+
 	def load(self):
 		pass
-		
+
 	def save(self, label):
 		x = open('log.txt', 'a+')
 		timestamp = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
 		x.write(timestamp+" "+label+"\n")
 		#x.write( label )
 		x.close()
-		
+
 
 #run(Clock())
 v = ui.load_view('watchit_ios.pyui')
