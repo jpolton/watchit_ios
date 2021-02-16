@@ -21,7 +21,8 @@ class Clock (Scene):
 		self.offset, sync_flag = self.get_offset()
 		self.button_state = 0 # [0,1,2] for different slider range
 		self.button_label = ["mins", "secs", "0.1s"]
-		self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
+		#self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
+		self.lag = Logging().load('log.txt')
 		self.slider_loc = [0.5, 0.5, 0.5] # Store the slider location
 
 		# Draw the clock
@@ -155,8 +156,22 @@ class Logging (Clock):
 		#print(data)
 		pass
 
-	def load(self):
-		pass
+	def load(self, fname):
+		"""
+		Load log file and return list of last slider values
+		self.lag = Logging().load('log.txt')
+		"""
+		with open(fname, "r") as file:
+			first_line = file.readline()
+			for last_line in file:
+				pass
+		timestamp = last_line[0]
+		lag = float(last_line[1])
+		offset = last_line[2]
+		lag_mins = int(lag/60)
+		lag_secs = int(lag-lag_mins*60)
+		lag_dsec = lag - lag_mins*60 - lag_secs
+		return [timedelta(seconds=lag_mins*60), timedelta(seconds=lag_secs), timedelta(seconds=lag_dsec)]
 
 	def save(self, label, offset):
 		x = open('log.txt', 'a+')
