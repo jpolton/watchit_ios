@@ -78,7 +78,11 @@ class Clock (Scene):
 		self.button.action = self.button_changed
 		self.button_save.action = self.button_save_changed
 
-
+	def lag_tot(self):
+		"""
+		sum datetime objects in self.lag and return as seconds
+		"""
+		return (self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()
 
 	def did_change_size(self):
 		self.face.position = self.size/2
@@ -138,11 +142,6 @@ class Clock (Scene):
 		Logging().save( str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()) )
 		self.update()
 
-	def lag_tot(self):
-		"""
-		sum datetime objects in self.lag and return as seconds
-		"""
-		return (self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()
 
 class Logging (Clock):
 	def setup(self, label):
