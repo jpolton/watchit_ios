@@ -4,15 +4,18 @@ Includes slider UI to adjust the minutes, seconds and tenths of seconds.
 
 To use internet clock time install stuff, see:
 https://github.com/ywangd/stash
-
-Needs true time
+"import requests as r; exec(r.get('https://bit.ly/get-stash').content)"
+Then
+% launch_stash.py
+> pip install pandas
+> pip install ntplib
 '''
 
 from scene import *
 import ui
 from math import pi, sin, cos
 from datetime import datetime,timedelta
-import pandas as pd
+#import pandas as pd
 #import ntplib
 
 class Clock (Scene):
