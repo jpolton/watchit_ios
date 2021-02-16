@@ -23,9 +23,10 @@ class Clock (Scene):
 		self.button_label = ["mins", "secs", "0.1s"]
 		try:
 			self.lag = Logging().load('log.txt')
+			self.slider_convert(self, self.lag, self.button_state, "seconds_to_slider")
 		except:
 			self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
-		self.slider_loc = [0.5, 0.5, 0.5] # Store the slider location
+			self.slider_loc = [0.5, 0.5, 0.5] # Store the slider location
 
 		# Draw the clock
 		r = min(self.size)/2 * 0.9
@@ -134,6 +135,32 @@ class Clock (Scene):
 		#sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
 		sender.superview['label2'].text = str(self.lag_tot())+"s"
 		self.update()
+
+	def slider_convert(self, value, button_state, direction):
+		"""
+		convert between slider values and seconds
+		direction = [ 'slider_to_seconds', 'seconds_to_slider']
+		"""
+		if direction == "slider_to_seconds":
+			if button_state == 0:
+				self.lag[0] = timedelta(seconds=int(value*10-5)*60)
+			elif button_state == 1:
+				self.lag[1] = timedelta(seconds=int(value*60-30))
+			elif button_state == 2:
+				self.lag[2] = timedelta(seconds=round(value*2-1,1))
+			else:
+				print('not expecting that button_state')
+		elif direction == "seconds_to_slider":
+			#if button_state == 0:
+			self.slider_loc[0] = (int(value[0].seconds/60) + 5)/10.  #timedelta(seconds=int(value*10-5)*60)
+			#elif button_state == 1:
+			self.slider_loc[1] = (value[1].seconds + 30)/60.
+			#elif button_state == 2:
+			self.slider_loc[2] = (value[2].seconds + 1)/2. #timedelta(seconds=round(value*2-1,1))
+			#else:
+			#print('not expecting that button_state')
+		pass
+
 
 	def button_changed(self, sender):
 		self.button_state = (self.button_state + 1) % 3
