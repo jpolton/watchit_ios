@@ -12,6 +12,7 @@ from scene import *
 import ui
 from math import pi, sin, cos
 from datetime import datetime,timedelta
+import pandas as pd
 #import ntplib
 
 class Clock (Scene):
@@ -138,6 +139,12 @@ class Clock (Scene):
 
 class Logging (Clock):
 	def setup(self, label):
+		check_logfile('log.txt')
+		pass
+
+	def check_logfile(self, fname:str):
+		x = open('log.txt', 'a+')
+		x.close()
 		pass
 
 	def load(self):
