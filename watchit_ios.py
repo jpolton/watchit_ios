@@ -128,7 +128,7 @@ class Clock (Scene):
 
 		self.slider_loc[self.button_state] = value
 		#sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
-		sender.superview['label2'].text = str(lag_tot())+"s"
+		sender.superview['label2'].text = str(self.lag_tot())+"s"
 		self.update()
 
 	def button_changed(self, sender):
@@ -139,7 +139,8 @@ class Clock (Scene):
 		self.update()
 
 	def button_save_changed(self, sender):
-		Logging().save( str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()) )
+		#Logging().save( str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()) )
+		Logging().save( str((self.lag_tot())), str(round(self.offset/1000000,3) )
 		self.update()
 
 
@@ -156,7 +157,7 @@ class Logging (Clock):
 	def load(self):
 		pass
 
-	def save(self, label):
+	def save(self, label, offset):
 		x = open('log.txt', 'a+')
 		timestamp = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
 		x.write(timestamp+" "+label+"\n")
