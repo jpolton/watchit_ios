@@ -7,7 +7,6 @@ https://github.com/ywangd/stash
 "import requests as r; exec(r.get('https://bit.ly/get-stash').content)"
 Then
 % launch_stash.py
-> pip install pandas
 > pip install ntplib
 '''
 
@@ -15,8 +14,7 @@ from scene import *
 import ui
 from math import pi, sin, cos
 from datetime import datetime,timedelta
-#import pandas as pd
-#import ntplib
+import ntplib
 
 class Clock (Scene):
 	def setup(self):
@@ -102,7 +100,7 @@ class Clock (Scene):
 			+ : local clock is ahead
 			- : local clock is behind
 			'''
-			if(0):
+			if(1):
 				x = ntplib.NTPClient()
 				try:
 					return datetime.now() - datetime.utcfromtimestamp(x.request('europe.pool.ntp.org').tx_time), True
