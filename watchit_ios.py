@@ -21,10 +21,14 @@ class Clock (Scene):
 		self.offset, sync_flag = self.get_offset()
 		self.button_state = 0 # [0,1,2] for different slider range
 		self.button_label = ["mins", "secs", "0.1s"]
-		try:
+		self.slider_loc=[0,0,0]
+		print("one")
+		if(1):
 			self.lag = Logging().load('log.txt')
-			self.slider_convert(self, self.lag, self.button_state, "seconds_to_slider")
-		except:
+			print("fig")
+			self.slider_convert(self.lag, self.button_state, "seconds_to_slider")
+			print(self.slider_loc)
+		else:
 			self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
 			self.slider_loc = [0.5, 0.5, 0.5] # Store the slider location
 
@@ -141,6 +145,7 @@ class Clock (Scene):
 		convert between slider values and seconds
 		direction = [ 'slider_to_seconds', 'seconds_to_slider']
 		"""
+		print (direction)
 		if direction == "slider_to_seconds":
 			if button_state == 0:
 				self.lag[0] = timedelta(seconds=int(value*10-5)*60)
@@ -151,12 +156,15 @@ class Clock (Scene):
 			else:
 				print('not expecting that button_state')
 		elif direction == "seconds_to_slider":
+			print((int(value[0].total_seconds()/60)+5)/10.)
 			#if button_state == 0:
-			self.slider_loc[0] = (int(value[0].seconds/60) + 5)/10.  #timedelta(seconds=int(value*10-5)*60)
+			self.slider_loc[0] = (int(value[0].total_seconds()/60)+5)/10.
 			#elif button_state == 1:
 			self.slider_loc[1] = (value[1].seconds + 30)/60.
 			#elif button_state == 2:
-			self.slider_loc[2] = (value[2].seconds + 1)/2. #timedelta(seconds=round(value*2-1,1))
+			self.slider_loc[2] = (value[2].seconds + 1)/2. 
+			print(self.slider_loc[2])
+			#timedelta(seconds=round(value*2-1,1))
 			#else:
 			#print('not expecting that button_state')
 		pass
