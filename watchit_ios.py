@@ -21,8 +21,10 @@ class Clock (Scene):
 		self.offset, sync_flag = self.get_offset()
 		self.button_state = 0 # [0,1,2] for different slider range
 		self.button_label = ["mins", "secs", "0.1s"]
-		#self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
-		self.lag = Logging().load('log.txt')
+		try:
+			self.lag = Logging().load('log.txt')
+		except:
+			self.lag = [timedelta(seconds=0), timedelta(seconds=0), timedelta(seconds=0)] # Store the lag [mins,sec,sec/10]
 		self.slider_loc = [0.5, 0.5, 0.5] # Store the slider location
 
 		# Draw the clock
