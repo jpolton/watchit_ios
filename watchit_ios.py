@@ -140,7 +140,7 @@ class Clock (Scene):
 
 	def button_save_changed(self, sender):
 		#Logging().save( str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()) )
-		Logging().save( str((self.lag_tot())), str(round(self.offset/1000000,3) )
+		Logging().save( str((self.lag_tot())), '{:03f}'.format(self.offset.seconds) )
 		self.update()
 
 
@@ -160,7 +160,7 @@ class Logging (Clock):
 	def save(self, label, offset):
 		x = open('log.txt', 'a+')
 		timestamp = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
-		x.write(timestamp+" "+label+"\n")
+		x.write(timestamp+","+label+","+offset+"\n")
 		#x.write( label )
 		x.close()
 
