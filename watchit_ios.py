@@ -60,7 +60,8 @@ class Clock (Scene):
 		self.did_change_size()
 		#self.offset = self.get_offset()
 		# add offset as label
-		label = LabelNode("offset:"+str(self.offset.microseconds)+u"\u03bcs", font=('HelveticaNeue-UltraLight', 0.1*r))
+		#label = LabelNode("offset:"+str(self.offset.microseconds)+u"\u03bcs", font=('HelveticaNeue-UltraLight', 0.1*r))
+		label = LabelNode("offset:"+str(self.offset.total_seconds())+"s", font=('HelveticaNeue-UltraLight', 0.1*r))
 		if sync_flag == True:
 			label.color = 'green'
 		else:
@@ -140,7 +141,7 @@ class Clock (Scene):
 
 	def button_save_changed(self, sender):
 		#Logging().save( str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()) )
-		Logging().save( str((self.lag_tot())), '{:03f}'.format(self.offset.seconds) )
+		Logging().save( str((self.lag_tot())), '{:.3f}'.format(self.offset.total_seconds()) )
 		self.update()
 
 
