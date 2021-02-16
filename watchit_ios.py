@@ -123,7 +123,8 @@ class Clock (Scene):
 			self.lag[2] = timedelta(seconds=round(value*2-1,1))
 
 		self.slider_loc[self.button_state] = value
-		sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
+		#sender.superview['label2'].text = str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds())+"s"
+		sender.superview['label2'].text = str(lag_tot())+"s"
 		self.update()
 
 	def button_changed(self, sender):
@@ -137,15 +138,20 @@ class Clock (Scene):
 		Logging().save( str((self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()) )
 		self.update()
 
+	def lag_tot(self):
+		"""
+		sum datetime objects in self.lag and return as seconds
+		"""
+		return (self.lag[0]+self.lag[1]+self.lag[2]).total_seconds()
 
 class Logging (Clock):
 	def setup(self, label):
 		check_logfile('log.txt')
 		pass
 
-	def check_logfile(self, fname:str):
-		x = open('log.txt', 'a+')
-		x.close()
+	def check_logfile(self, fname):
+		#data = pd.read_csv(fname, header = None)
+		#print(data)
 		pass
 
 	def load(self):
