@@ -1,6 +1,10 @@
 '''
+Analogue clock with lag relative to true time controllable by sliders.
+Use to calculate lag for wrist watch.
+Save lag, with timestamp and device time offset to file.
+
 A simple analog clock made of ShapeNodes.
-Includes slider UI to adjust the minutes, seconds and tenths of seconds.
+Slider UI to adjust the minutes, seconds and tenths of seconds.
 
 To use internet clock time install stuff, see:
 https://github.com/ywangd/stash
@@ -23,6 +27,8 @@ class Clock (Scene):
 		self.button_state = 0 # [0,1,2] for different slider range
 		self.button_label = ["mins", "secs", "0.1s"]
 		self.slider_loc=[0,0,0]
+		self.sync_pause = False # pause clock is True
+		self.sync_count = 0
 		#print("one")
 		"""
 		The lag is stored in a 3 address list: mins, seconds and 1/10 seconds. All with units [s]
@@ -90,11 +96,15 @@ class Clock (Scene):
 		self.button = self.view.superview.subviews[3]
 		self.label2 = self.view.superview.subviews[4]
 		self.button_save = self.view.superview.subviews[5]
-
+		self.button_sync = self.view.superview.subviews[6]
+		self.button_bump = self.view.superview.subviews[7]
+				
 		self.slider.action = self.slider_changed
 		self.button.action = self.button_changed
 		self.button_save.action = self.button_save_changed
-		
+		self.button_sync.action = self.button_sync_changed
+		self.button_bump.action = self.button_bump_changed
+				
 		# Set initial Lag label value
 		self.label2.text = str(self.lag_tot())+"s"
 		# Set initial slider position (mins)
@@ -109,15 +119,27 @@ class Clock (Scene):
 	def did_change_size(self):
 		self.face.position = self.size/2
 
+	def redraw(self):
+			t = datetime.now() - self.offset + self.lag[0] + self.lag[1] + self.lag[2]
+			tick = -2 * pi / 60.0
+			seconds = t.second + t.microsecond/1000000.0
+			minutes = t.minute + seconds/60.0
+			hours = (t.hour % 12) + minutes/60.0
+			self.hands[0].rotation = 5 * tick * hours
+			self.hands[1].rotation = tick * minutes
+			self.hands[2].rotation = tick * seconds
+	
 	def update(self):
-		t = datetime.now() - self.offset + self.lag[0] + self.lag[1] + self.lag[2]
-		tick = -2 * pi / 60.0
-		seconds = t.second + t.microsecond/1000000.0
-		minutes = t.minute + seconds/60.0
-		hours = (t.hour % 12) + minutes/60.0
-		self.hands[0].rotation = 5 * tick * hours
-		self.hands[1].rotation = tick * minutes
-		self.hands[2].rotation = tick * seconds
+		if self.sync_pause == False:
+			self.redraw()
+		elif self.sync_pause == True:		
+			new_lag = self.lag_tot_sync_start - (datetime.now() - 				self.sync_start).total_seconds()
+			self.slider_convert(new_lag, None, 'split_lag')
+			self.slider_convert(self.lag, None, "seconds_to_slider")
+			self.slider.value = self.slider_loc[self.button_state]
+			# Set initial Lag label value
+			self.label2.text = str(self.lag_tot())+"s"
+			pass
 		#self.label2.text = self.picker.date.strftime('%H:%M:%S')
 
 	def get_offset(self):
@@ -183,6 +205,12 @@ class Clock (Scene):
 			#timedelta(seconds=round(value*2-1,1))
 			#else:
 			#print('not expecting that button_state')
+		elif direction == 'split_lag':
+			# value is lag_tot() in seconds
+			mins_in_sec = min( range(-5*60, (5+1)*60, 60),key=lambda x:abs(x-value)) 
+			self.lag[0] = timedelta(seconds=mins_in_sec)
+			self.lag[1] = timedelta(seconds=int(value) - mins_in_sec)
+			self.lag[2] = timedelta(seconds=value - int(value))
 		pass
 
 
@@ -198,6 +226,39 @@ class Clock (Scene):
 		Logging().save( str((self.lag_tot())), '{:.3f}'.format(self.offset.total_seconds()) )
 		self.update()
 
+	def button_sync_changed(self, sender):
+		if self.sync_pause == False: # pause the clock
+			self.sync_start = datetime.now()
+			self.lag_tot_sync_start = self.lag_tot()
+			self.button_sync.title = 'start'
+			self.sync_pause = True
+			#print('stop:',[i.total_seconds() for i in self.lag])
+		else: # restart the clock
+			#new_lag = self.lag_tot() - (datetime.now() - self.sync_count).total_seconds()
+			#self.slider_convert(new_lag, None, 'split_lag')
+			#self.slider_convert(self.lag, None, "seconds_to_slider")
+			self.button_sync.title = 'pause'
+			self.sync_pause = False
+			#print('start:',[i.total_seconds() for i in self.lag])
+			#sender.superview['slider1'].value = self.slider_loc[self.button_state]
+			pass
+			
+	def button_bump_changed(self, sender):
+		"""
+		Bump the displayed time.
+		If paused bump to the nearest second.
+		If ...
+		"""
+		if self.sync_pause == True: # is paused
+			# Round to the nearest second
+			#t = datetime.now() - self.offset + self.lag[0] + self.lag[1] + self.lag[2]
+			lag2_old = self.lag[2]
+			self.lag[2] = timedelta(seconds=-(datetime.now() - self.offset).microsecond/1000000.0)
+			self.redraw()
+			# bump start point for lag counter by corresponding amount (so that the lag is continuously incremented during the pause. See update() method)
+			self.lag_tot_sync_start += (self.lag[2] - lag2_old).total_seconds()
+		else:
+			pass
 
 class Logging (Clock):
 	def setup(self, label):

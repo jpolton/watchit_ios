@@ -8,11 +8,11 @@
         "frame" : "{{0, 0}, {375, 375}}",
         "class" : "View",
         "attributes" : {
-          "class" : "View",
+          "custom_class" : "SceneView",
           "frame" : "{{87, 95}, {100, 100}}",
           "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+          "class" : "View",
           "name" : "sceneview",
-          "custom_class" : "SceneView",
           "uuid" : "8F3A5C90-DA54-4CBD-A682-92C5ED04EE82"
         },
         "selected" : false
@@ -99,6 +99,38 @@
           "name" : "button2",
           "uuid" : "722CD908-42A9-4DED-B27D-F822F3613F37"
         },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{144, 52}, {80, 34}}",
+        "class" : "Button",
+        "attributes" : {
+          "uuid" : "B6CAC6F5-91DB-42CF-AAF4-7CDF65F45285",
+          "frame" : "{{148, 172}, {80, 32}}",
+          "title" : "Pause",
+          "class" : "Button",
+          "name" : "button3",
+          "font_size" : 12
+        },
+        "selected" : false
+      },
+      {
+        "nodes" : [
+
+        ],
+        "frame" : "{{228, 52}, {41, 32}}",
+        "class" : "Button",
+        "attributes" : {
+          "uuid" : "48EBBAE1-7C90-4E91-A286-A4338B20E4F0",
+          "frame" : "{{148, 172}, {80, 32}}",
+          "title" : "bump",
+          "class" : "Button",
+          "name" : "button4",
+          "font_size" : 12
+        },
         "selected" : true
       }
     ],
@@ -108,8 +140,8 @@
       "tint_color" : "RGBA(0.000000,0.478000,1.000000,1.000000)",
       "enabled" : true,
       "border_color" : "RGBA(0.000000,0.000000,0.000000,1.000000)",
-      "name" : "",
       "background_color" : "RGBA(1.000000,1.000000,1.000000,1.000000)",
+      "name" : "",
       "flex" : ""
     },
     "selected" : false
